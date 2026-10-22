@@ -1,0 +1,828 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-16T06:25:17.804494+00:00",
+  "dataset": {
+    "records": 12000,
+    "source_records": 2260668,
+    "narratives": 600,
+    "nonempty_descriptions": 628,
+    "source_narratives": 125814,
+    "sources": [
+      {
+        "name": "accepted_2007_to_2018Q4.csv.gz",
+        "path": "data/raw/accepted_2007_to_2018Q4.csv.gz",
+        "records": 2260668,
+        "bytes": 520641187,
+        "sha256": "db0902b17851cab034de987f7e16cf943e3a120cb0df9fe46236e08e3c23146b",
+        "currency": "USD",
+        "scope": "US LendingClub consumer lending; 2007–2018Q4",
+        "origin": "User-supplied local file; upstream license/collection not independently verified."
+      },
+      {
+        "name": "agmarknet_india_historical_prices_2024_2025.csv.xlsx",
+        "path": "agmarknet_india_historical_prices_2024_2025.csv.xlsx",
+        "records": 1048575,
+        "bytes": 58184675,
+        "sha256": "79b393091ec06a48317bf3be1ec581bae254e66dd6b518d5b7a959427189cbb5",
+        "currency": "INR/quintal",
+        "scope": "Indian wholesale market prices; supplied 2024–2025 workbook",
+        "origin": "User-supplied local file; upstream license/collection not independently verified."
+      },
+      {
+        "name": "data_season.csv",
+        "path": "data_season.csv",
+        "records": 3162,
+        "bytes": 260497,
+        "sha256": "0091c95e0908c0866b4ad896caf89f2c776636b1c8f875febe98591a28fe8bd6",
+        "currency": "INR where stated; mixed agriculture measures",
+        "scope": "Agricultural context; no linked loan outcomes",
+        "origin": "User-supplied local file; upstream license/collection not independently verified."
+      },
+      {
+        "name": "dairy_dataset.csv",
+        "path": "dairy_dataset.csv",
+        "records": 4326,
+        "bytes": 734247,
+        "sha256": "ad77e31c32f09ba1f69be19736f2608e0296ea3eae4e0e4cd72f99d45370a0c4",
+        "currency": "INR",
+        "scope": "Dairy context; no linked loan outcomes",
+        "origin": "User-supplied local file; upstream license/collection not independently verified."
+      }
+    ],
+    "table_counts": {
+      "loans": 12000,
+      "market_prices": 1048575,
+      "farm_records": 3162,
+      "dairy_records": 4326
+    },
+    "currency": "USD",
+    "scope": "Historical US LendingClub consumer lending benchmark; not a developing-region microfinance impact dataset."
+  },
+  "metrics": {
+    "repayment_rate": 0.798976,
+    "resolved_count": 7029,
+    "unresolved_count": 4971,
+    "avg_income_change_pct": null,
+    "silhouette_score": 0.30539,
+    "davies_bouldin_score": 1.37988,
+    "cluster_count": 2
+  },
+  "clusters": [
+    {
+      "id": 0,
+      "label": "Segment 1",
+      "count": 3533,
+      "resolved_count": 1697,
+      "repayment_rate": 0.655274,
+      "income_change_pct": null,
+      "mean_loan_amount": 21044.678743,
+      "mean_interest_rate": 16.252697,
+      "mean_annual_income": 87353.205604,
+      "mean_dti": 20.255922,
+      "mean_term_months": 59.409001
+    },
+    {
+      "id": 1,
+      "label": "Segment 2",
+      "count": 8467,
+      "resolved_count": 5332,
+      "repayment_rate": 0.844711,
+      "income_change_pct": null,
+      "mean_loan_amount": 12794.590764,
+      "mean_interest_rate": 11.775079,
+      "mean_annual_income": 74377.329537,
+      "mean_dti": 18.379165,
+      "mean_term_months": 36.008504
+    }
+  ],
+  "topics": [
+    {
+      "id": 0,
+      "label": "pay credit / cards / credit cards",
+      "keywords": [
+        "pay credit",
+        "cards",
+        "credit cards",
+        "pay",
+        "credit",
+        "cards pay",
+        "payment",
+        "balance"
+      ],
+      "count": 80,
+      "resolved_count": 80,
+      "repayment_rate": 0.85
+    },
+    {
+      "id": 1,
+      "label": "credit card / card / card debt",
+      "keywords": [
+        "credit card",
+        "card",
+        "card debt",
+        "consolidate",
+        "consolidate credit",
+        "credit",
+        "debt",
+        "payment"
+      ],
+      "count": 118,
+      "resolved_count": 118,
+      "repayment_rate": 0.855932
+    },
+    {
+      "id": 2,
+      "label": "consolidation / debt consolidation / debt",
+      "keywords": [
+        "consolidation",
+        "debt consolidation",
+        "debt",
+        "consolidation pay",
+        "consolidation credit",
+        "mortgage",
+        "pay",
+        "pay debt"
+      ],
+      "count": 48,
+      "resolved_count": 48,
+      "repayment_rate": 0.895833
+    },
+    {
+      "id": 3,
+      "label": "years / payment / time",
+      "keywords": [
+        "years",
+        "payment",
+        "time",
+        "job",
+        "monthly",
+        "payments",
+        "bills",
+        "pay"
+      ],
+      "count": 291,
+      "resolved_count": 291,
+      "repayment_rate": 0.828179
+    },
+    {
+      "id": 4,
+      "label": "high / high credit / pay high",
+      "keywords": [
+        "high",
+        "high credit",
+        "pay high",
+        "cards",
+        "credit cards",
+        "credit",
+        "pay",
+        "paying high"
+      ],
+      "count": 63,
+      "resolved_count": 63,
+      "repayment_rate": 0.873016
+    }
+  ],
+  "correlations": [
+    {
+      "feature": "loan_amount",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": -0.078157,
+      "n": 7029
+    },
+    {
+      "feature": "annual_income",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": 0.053972,
+      "n": 7029
+    },
+    {
+      "feature": "interest_rate",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": -0.268828,
+      "n": 7029
+    },
+    {
+      "feature": "dti",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": -0.090042,
+      "n": 7026
+    },
+    {
+      "feature": "term_months",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": -0.193944,
+      "n": 7029
+    },
+    {
+      "feature": "sentiment_score",
+      "outcome": "fully_paid_among_resolved",
+      "correlation": 0.023452,
+      "n": 600
+    }
+  ],
+  "loan_structures": [
+    {
+      "term_months": 36,
+      "count": 8551,
+      "resolved_count": 5384,
+      "repayment_rate": 0.841939,
+      "mean_interest_rate": 11.88548,
+      "mean_loan_amount": 12963.077418
+    },
+    {
+      "term_months": 60,
+      "count": 3449,
+      "resolved_count": 1645,
+      "repayment_rate": 0.658359,
+      "mean_interest_rate": 16.088034,
+      "mean_loan_amount": 20827.884894
+    }
+  ],
+  "purpose_comparisons": [
+    {
+      "purpose": "car",
+      "count": 127,
+      "resolved_count": 88,
+      "repayment_rate": 0.886364
+    },
+    {
+      "purpose": "credit_card",
+      "count": 2753,
+      "resolved_count": 1587,
+      "repayment_rate": 0.831758
+    },
+    {
+      "purpose": "debt_consolidation",
+      "count": 6773,
+      "resolved_count": 4019,
+      "repayment_rate": 0.785021
+    },
+    {
+      "purpose": "educational",
+      "count": 3,
+      "resolved_count": 3,
+      "repayment_rate": 1.0
+    },
+    {
+      "purpose": "home_improvement",
+      "count": 767,
+      "resolved_count": 433,
+      "repayment_rate": 0.819861
+    },
+    {
+      "purpose": "house",
+      "count": 75,
+      "resolved_count": 37,
+      "repayment_rate": 0.810811
+    },
+    {
+      "purpose": "major_purchase",
+      "count": 271,
+      "resolved_count": 144,
+      "repayment_rate": 0.777778
+    },
+    {
+      "purpose": "medical",
+      "count": 145,
+      "resolved_count": 77,
+      "repayment_rate": 0.831169
+    },
+    {
+      "purpose": "moving",
+      "count": 101,
+      "resolved_count": 59,
+      "repayment_rate": 0.661017
+    },
+    {
+      "purpose": "other",
+      "count": 738,
+      "resolved_count": 419,
+      "repayment_rate": 0.809069
+    },
+    {
+      "purpose": "renewable_energy",
+      "count": 11,
+      "resolved_count": 8,
+      "repayment_rate": 0.625
+    },
+    {
+      "purpose": "small_business",
+      "count": 135,
+      "resolved_count": 81,
+      "repayment_rate": 0.716049
+    },
+    {
+      "purpose": "vacation",
+      "count": 91,
+      "resolved_count": 64,
+      "repayment_rate": 0.75
+    },
+    {
+      "purpose": "wedding",
+      "count": 10,
+      "resolved_count": 10,
+      "repayment_rate": 1.0
+    }
+  ],
+  "regions": [
+    {
+      "state": "AK",
+      "count": 21,
+      "resolved_count": 13,
+      "repayment_rate": 0.846154
+    },
+    {
+      "state": "AL",
+      "count": 147,
+      "resolved_count": 89,
+      "repayment_rate": 0.730337
+    },
+    {
+      "state": "AR",
+      "count": 94,
+      "resolved_count": 62,
+      "repayment_rate": 0.806452
+    },
+    {
+      "state": "AZ",
+      "count": 307,
+      "resolved_count": 177,
+      "repayment_rate": 0.79661
+    },
+    {
+      "state": "CA",
+      "count": 1712,
+      "resolved_count": 1080,
+      "repayment_rate": 0.816667
+    },
+    {
+      "state": "CO",
+      "count": 238,
+      "resolved_count": 135,
+      "repayment_rate": 0.785185
+    },
+    {
+      "state": "CT",
+      "count": 168,
+      "resolved_count": 84,
+      "repayment_rate": 0.797619
+    },
+    {
+      "state": "DC",
+      "count": 28,
+      "resolved_count": 21,
+      "repayment_rate": 0.809524
+    },
+    {
+      "state": "DE",
+      "count": 29,
+      "resolved_count": 18,
+      "repayment_rate": 0.777778
+    },
+    {
+      "state": "FL",
+      "count": 809,
+      "resolved_count": 442,
+      "repayment_rate": 0.800905
+    },
+    {
+      "state": "GA",
+      "count": 417,
+      "resolved_count": 247,
+      "repayment_rate": 0.854251
+    },
+    {
+      "state": "HI",
+      "count": 62,
+      "resolved_count": 37,
+      "repayment_rate": 0.837838
+    },
+    {
+      "state": "ID",
+      "count": 17,
+      "resolved_count": 8,
+      "repayment_rate": 0.625
+    },
+    {
+      "state": "IL",
+      "count": 525,
+      "resolved_count": 292,
+      "repayment_rate": 0.811644
+    },
+    {
+      "state": "IN",
+      "count": 189,
+      "resolved_count": 116,
+      "repayment_rate": 0.784483
+    },
+    {
+      "state": "KS",
+      "count": 87,
+      "resolved_count": 61,
+      "repayment_rate": 0.885246
+    },
+    {
+      "state": "KY",
+      "count": 113,
+      "resolved_count": 56,
+      "repayment_rate": 0.803571
+    },
+    {
+      "state": "LA",
+      "count": 147,
+      "resolved_count": 89,
+      "repayment_rate": 0.741573
+    },
+    {
+      "state": "MA",
+      "count": 293,
+      "resolved_count": 163,
+      "repayment_rate": 0.766871
+    },
+    {
+      "state": "MD",
+      "count": 272,
+      "resolved_count": 162,
+      "repayment_rate": 0.740741
+    },
+    {
+      "state": "ME",
+      "count": 28,
+      "resolved_count": 13,
+      "repayment_rate": 0.923077
+    },
+    {
+      "state": "MI",
+      "count": 349,
+      "resolved_count": 202,
+      "repayment_rate": 0.846535
+    },
+    {
+      "state": "MN",
+      "count": 193,
+      "resolved_count": 122,
+      "repayment_rate": 0.795082
+    },
+    {
+      "state": "MO",
+      "count": 178,
+      "resolved_count": 108,
+      "repayment_rate": 0.787037
+    },
+    {
+      "state": "MS",
+      "count": 66,
+      "resolved_count": 35,
+      "repayment_rate": 0.685714
+    },
+    {
+      "state": "MT",
+      "count": 31,
+      "resolved_count": 16,
+      "repayment_rate": 0.8125
+    },
+    {
+      "state": "NC",
+      "count": 325,
+      "resolved_count": 194,
+      "repayment_rate": 0.752577
+    },
+    {
+      "state": "ND",
+      "count": 20,
+      "resolved_count": 12,
+      "repayment_rate": 1.0
+    },
+    {
+      "state": "NE",
+      "count": 42,
+      "resolved_count": 19,
+      "repayment_rate": 0.684211
+    },
+    {
+      "state": "NH",
+      "count": 58,
+      "resolved_count": 37,
+      "repayment_rate": 0.864865
+    },
+    {
+      "state": "NJ",
+      "count": 436,
+      "resolved_count": 265,
+      "repayment_rate": 0.777358
+    },
+    {
+      "state": "NM",
+      "count": 65,
+      "resolved_count": 42,
+      "repayment_rate": 0.880952
+    },
+    {
+      "state": "NV",
+      "count": 164,
+      "resolved_count": 99,
+      "repayment_rate": 0.737374
+    },
+    {
+      "state": "NY",
+      "count": 977,
+      "resolved_count": 579,
+      "repayment_rate": 0.759931
+    },
+    {
+      "state": "OH",
+      "count": 410,
+      "resolved_count": 241,
+      "repayment_rate": 0.788382
+    },
+    {
+      "state": "OK",
+      "count": 117,
+      "resolved_count": 61,
+      "repayment_rate": 0.721311
+    },
+    {
+      "state": "OR",
+      "count": 123,
+      "resolved_count": 66,
+      "repayment_rate": 0.848485
+    },
+    {
+      "state": "PA",
+      "count": 426,
+      "resolved_count": 243,
+      "repayment_rate": 0.802469
+    },
+    {
+      "state": "RI",
+      "count": 57,
+      "resolved_count": 28,
+      "repayment_rate": 0.714286
+    },
+    {
+      "state": "SC",
+      "count": 153,
+      "resolved_count": 92,
+      "repayment_rate": 0.858696
+    },
+    {
+      "state": "SD",
+      "count": 24,
+      "resolved_count": 15,
+      "repayment_rate": 0.866667
+    },
+    {
+      "state": "TN",
+      "count": 197,
+      "resolved_count": 108,
+      "repayment_rate": 0.768519
+    },
+    {
+      "state": "TX",
+      "count": 966,
+      "resolved_count": 526,
+      "repayment_rate": 0.794677
+    },
+    {
+      "state": "UT",
+      "count": 84,
+      "resolved_count": 51,
+      "repayment_rate": 0.862745
+    },
+    {
+      "state": "VA",
+      "count": 336,
+      "resolved_count": 192,
+      "repayment_rate": 0.822917
+    },
+    {
+      "state": "VT",
+      "count": 23,
+      "resolved_count": 13,
+      "repayment_rate": 0.923077
+    },
+    {
+      "state": "WA",
+      "count": 245,
+      "resolved_count": 155,
+      "repayment_rate": 0.858065
+    },
+    {
+      "state": "WI",
+      "count": 175,
+      "resolved_count": 108,
+      "repayment_rate": 0.814815
+    },
+    {
+      "state": "WV",
+      "count": 28,
+      "resolved_count": 15,
+      "repayment_rate": 1.0
+    },
+    {
+      "state": "WY",
+      "count": 29,
+      "resolved_count": 20,
+      "repayment_rate": 0.75
+    }
+  ],
+  "sentiment": [
+    {
+      "label": "negative",
+      "count": 236,
+      "resolved_count": 236,
+      "repayment_rate": 0.838983
+    },
+    {
+      "label": "neutral",
+      "count": 261,
+      "resolved_count": 261,
+      "repayment_rate": 0.842912
+    },
+    {
+      "label": "positive",
+      "count": 103,
+      "resolved_count": 103,
+      "repayment_rate": 0.873786
+    }
+  ],
+  "status_counts": {
+    "Fully Paid": 5609,
+    "Charged Off": 1410,
+    "Current": 4799,
+    "In Grace Period": 44,
+    "Late (31-120 days)": 108,
+    "Late (16-30 days)": 20,
+    "Does not meet the credit policy. Status:Fully Paid": 7,
+    "Does not meet the credit policy. Status:Charged Off": 3
+  },
+  "filters": {
+    "purposes": [
+      "car",
+      "credit_card",
+      "debt_consolidation",
+      "educational",
+      "home_improvement",
+      "house",
+      "major_purchase",
+      "medical",
+      "moving",
+      "other",
+      "renewable_energy",
+      "small_business",
+      "vacation",
+      "wedding"
+    ],
+    "states": [
+      "AK",
+      "AL",
+      "AR",
+      "AZ",
+      "CA",
+      "CO",
+      "CT",
+      "DC",
+      "DE",
+      "FL",
+      "GA",
+      "HI",
+      "ID",
+      "IL",
+      "IN",
+      "KS",
+      "KY",
+      "LA",
+      "MA",
+      "MD",
+      "ME",
+      "MI",
+      "MN",
+      "MO",
+      "MS",
+      "MT",
+      "NC",
+      "ND",
+      "NE",
+      "NH",
+      "NJ",
+      "NM",
+      "NV",
+      "NY",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "VA",
+      "VT",
+      "WA",
+      "WI",
+      "WV",
+      "WY"
+    ]
+  },
+  "insights": [
+    "12,000 loans were sampled uniformly from 2,260,668 valid historical records with seed 42.",
+    "7,029 sampled loans have a resolved status; 79.9% of these are fully paid. Active loans are excluded from this denominator.",
+    "600 sampled loans have descriptions of at least 20 characters for exploratory topic and sentiment analysis.",
+    "Compare term, purpose and segment outcomes as historical associations, controlling for confounding in any future study.",
+    "Use the separate Indian market-price evidence for agricultural context. Do not transfer US consumer-loan thresholds to Indian borrowers."
+  ],
+  "limitations": [
+    "The supplied lending archive contains US consumer loans in USD. It does not establish microloan impacts in developing regions.",
+    "Household poverty, income before/after lending, employment creation, business revenue changes and a control group are absent. Poverty reduction and causal effects cannot be estimated.",
+    "Annual income is a baseline applicant attribute, not an economic improvement outcome. Repayment is a loan performance proxy, not a poverty measure.",
+    "Borrower narratives are sparse, self-selected and historical; narrative sentiment uses an unvalidated transparent lexicon. No labeled sentiment accuracy is claimed.",
+    "Clusters describe pre-origination financial attributes. Outcome comparisons use a historical snapshot, with censoring and selection bias; no credit approval or causal model is validated.",
+    "The market workbook contains 1,048,575 data rows at the Excel sheet limit. Coverage outside the supplied workbook cannot be verified.",
+    "The seasonal and dairy files provide business context, not borrower-linked loan outcomes. Their blank descriptions are not replaced with synthetic narratives."
+  ],
+  "methods": {
+    "sampling": "Uniform reservoir (Algorithm R), seed 42, target 12,000; complete file scanned once; eligibility: finite positive loan_amnt; no replacement; source rows sorted after selection.",
+    "cluster_features": [
+      "loan_amount",
+      "annual_income",
+      "interest_rate",
+      "dti",
+      "term_months"
+    ],
+    "cluster_feature_missing_counts": {
+      "loan_amount": 0,
+      "annual_income": 0,
+      "interest_rate": 0,
+      "dti": 10,
+      "term_months": 0
+    },
+    "imputation_medians": {
+      "loan_amount": 13000.0,
+      "annual_income": 65000.0,
+      "interest_rate": 12.62,
+      "dti": 17.76,
+      "term_months": 36.0
+    },
+    "clip_bounds_1_99_percentile": {
+      "loan_amount": [
+        1500.0,
+        40000.0
+      ],
+      "annual_income": [
+        17000.0,
+        275000.0
+      ],
+      "interest_rate": [
+        5.32,
+        27.27
+      ],
+      "dti": [
+        1.66,
+        45.43
+      ],
+      "term_months": [
+        36.0,
+        60.0
+      ]
+    },
+    "scaling": "Median imputation, 1st/99th percentile clipping, log1p amount/income, StandardScaler.",
+    "cluster_selection": "Highest silhouette on a fixed random sample of up to 2,000 rows; candidate k=2..6; no outcome variables in features.",
+    "cluster_experiments": [
+      {
+        "k": 2,
+        "silhouette_score": 0.30539,
+        "davies_bouldin_score": 1.37988
+      },
+      {
+        "k": 3,
+        "silhouette_score": 0.24773,
+        "davies_bouldin_score": 1.41837
+      },
+      {
+        "k": 4,
+        "silhouette_score": 0.2375,
+        "davies_bouldin_score": 1.374
+      },
+      {
+        "k": 5,
+        "silhouette_score": 0.22497,
+        "davies_bouldin_score": 1.47891
+      },
+      {
+        "k": 6,
+        "silhouette_score": 0.21298,
+        "davies_bouldin_score": 1.46455
+      }
+    ],
+    "random_seed": 42,
+    "repayment_definition": "Fully Paid / (Fully Paid + Charged Off), including equivalent legacy policy-status labels. All other statuses excluded.",
+    "correlation": "Pairwise complete-case Pearson correlation with binary fully-paid status among resolved loans. Descriptive association; no causal or significance claim.",
+    "topics": "TF-IDF (unigrams/bigrams, min_df=3, max_df=0.90, max_features=2000), 5-component NMF, top 8 terms. Dominant component assignment; zero-vectors unassigned.",
+    "topic_vocabulary_size": 872,
+    "sentiment": "Fixed positive/negative lexicon with 3-token negation window. Score=(positive-negative)/matched words; >0.1 positive, <-0.1 negative, otherwise neutral.",
+    "source_join": "Loan structures, narratives, clusters and repayment joined within each sampled source record. Market/farm/dairy data remain separate regional business context.",
+    "business_outcomes": "Not available as observed longitudinal borrower-level outcomes."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-16T06:25:17.804494+00:00",
+  "loans": {
+    "rows_scanned": 2260701,
+    "valid_rows": 2260668,
+    "invalid_loan_amount_rows": 33,
+    "sample_rows": 12000,
+    "nonempty_descriptions": 125814,
+    "sampling": "Uniform reservoir (Algorithm R), seed 42, target 12,000; complete file scanned once; eligibility: finite positive loan_amnt; no replacement; source rows sorted after selection."
+  },
+  "market": {
+    "rows_scanned": 1048575,
+    "imported_rows": 1048575,
+    "invalid_price_or_date_rows": 0,
+    "sheet": "agmarknet_india_historical_pric",
+    "price_unit": "INR per quintal",
+    "source_at_excel_row_limit": true
+  },
+  "farm": {
+    "rows": 3162,
+    "nonempty_business_descriptions": 3
+  },
+  "dairy": {
+    "rows": 4326,
+    "nonempty_business_descriptions": 1
+  },
+  "sources": [
+    {
+      "name": "accepted_2007_to_2018Q4.csv.gz",
+      "path": "data/raw/accepted_2007_to_2018Q4.csv.gz",
+      "records": 2260668,
+      "bytes": 520641187,
+      "sha256": "db0902b17851cab034de987f7e16cf943e3a120cb0df9fe46236e08e3c23146b",
+      "currency": "USD",
+      "scope": "US LendingClub consumer lending; 2007–2018Q4",
+      "origin": "User-supplied local file; upstream license/collection not independently verified."
+    },
+    {
+      "name": "agmarknet_india_historical_prices_2024_2025.csv.xlsx",
+      "path": "agmarknet_india_historical_prices_2024_2025.csv.xlsx",
+      "records": 1048575,
+      "bytes": 58184675,
+      "sha256": "79b393091ec06a48317bf3be1ec581bae254e66dd6b518d5b7a959427189cbb5",
+      "currency": "INR/quintal",
+      "scope": "Indian wholesale market prices; supplied 2024–2025 workbook",
+      "origin": "User-supplied local file; upstream license/collection not independently verified."
+    },
+    {
+      "name": "data_season.csv",
+      "path": "data_season.csv",
+      "records": 3162,
+      "bytes": 260497,
+      "sha256": "0091c95e0908c0866b4ad896caf89f2c776636b1c8f875febe98591a28fe8bd6",
+      "currency": "INR where stated; mixed agriculture measures",
+      "scope": "Agricultural context; no linked loan outcomes",
+      "origin": "User-supplied local file; upstream license/collection not independently verified."
+    },
+    {
+      "name": "dairy_dataset.csv",
+      "path": "dairy_dataset.csv",
+      "records": 4326,
+      "bytes": 734247,
+      "sha256": "ad77e31c32f09ba1f69be19736f2608e0296ea3eae4e0e4cd72f99d45370a0c4",
+      "currency": "INR",
+      "scope": "Dairy context; no linked loan outcomes",
+      "origin": "User-supplied local file; upstream license/collection not independently verified."
+    }
+  ],
+  "build_seconds": 69.619,
+  "integrity_check": "ok",
+  "pre_rebuild_backup": null,
+  "privacy": "Web rows use local sample IDs and omit original loan IDs, URLs, job titles and raw descriptions."
+}
