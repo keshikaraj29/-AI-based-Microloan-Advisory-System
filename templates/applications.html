@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% from "_macros.html" import money,status %}
+{% block title %}My applications · Microloan Atlas{% endblock %}
+{% block content %}
+<main id="main" class="page-shell workspace-shell">
+ <div class="page-heading"><div><p class="eyebrow">Your workspace</p><h1>Every application.<br><em>One clear view.</em></h1><p>Follow the assessment, repayment schedule, and recorded progress of your loans.</p></div><a class="primary-button" href="/apply">New application <span aria-hidden="true">＋</span></a></div>
+ <section class="research-card applications-card" aria-labelledby="applications-title"><div class="section-topline"><h2 id="applications-title">My applications</h2><span class="subtle-tag">{{ applications.total|default(0) }} saved applications</span></div>
+ {% if applications['items'] %}<div class="application-grid">{% for item in applications['items'] %}
+  {% set app_id = item.application_id|default(item.borrower_id, true) %}
+  <article class="saved-application"><div class="saved-heading"><span class="application-kind">{{ item.category_label|default(item.category, true)|default('Loan application',true)|replace('_',' ')|title }}</span>{{ status(item.repayment_status|default('Not tracked')) }}</div><h3>{{ money(item.loan_amount) }}</h3><p>{{ item.term_months|default('—') }} months <span aria-hidden="true">·</span> {{ item.cluster_label|default('Assessment available',true) }}</p><dl class="saved-meta"><div><dt>Application</dt><dd>{{ app_id|string|truncate(16, true, '…') }}</dd></div><div><dt>Created</dt><dd>{{ item.created_at|default('Saved locally')|string|truncate(10, true, '') }}</dd></div></dl><div class="saved-actions"><a href="/applications/{{ app_id }}" class="primary-button">View & track →</a><a href="/applications/{{ app_id }}/assessment" class="text-link">Assessment</a></div></article>
+ {% endfor %}</div><div class="table-pagination"><span>Page {{ applications.page }} of {{ applications.pages or 1 }}</span><div>{% if applications.page > 1 %}<a class="secondary-btn compact-btn" href="/applications?page={{ applications.page - 1 }}">← Previous</a>{% endif %}{% if applications.page < applications.pages %}<a class="secondary-btn compact-btn" href="/applications?page={{ applications.page + 1 }}">Next →</a>{% endif %}</div></div>
+ {% else %}<div class="workspace-empty"><div class="empty-symbol" aria-hidden="true">＋</div><h3>Your next chapter starts here.</h3><p>Create your first loan application to see its assessment and build a repayment record.</p><a class="primary-button" href="/apply">Create an application →</a></div>{% endif %}
+ </section>
+</main>
+{% endblock %}

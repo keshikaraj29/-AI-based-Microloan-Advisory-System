@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7faff">
+    <meta name="application-id" content="{{ application_id|default(application.id if application is defined else request.args.get('application_id', ''), true) }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Explore microloan datasets, borrower narratives, clusters, and livelihood indicators in the PP1 research project.">
+    <title>{% block title %}Microloan Atlas · PP1{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset_url(filename='css/styles.css') }}">
+    <script src="{{ asset_url(filename='js/app.js') }}" defer></script>
+    {% block scripts %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="brand" href="{{ url_for('landing') }}" aria-label="Microloan Atlas home">
+            <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" width="26" height="26"><path d="M4 22V12h5v10M12 22V7h5v15M20 22V3h5v19" fill="none" stroke="currentColor" stroke-width="3"/><path d="M3 25h23" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span>Microloan<span class="brand-light"> Atlas</span><small>NLP & CLUSTERING RESEARCH</small></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="{{ url_for('landing') }}"{% if request.path == '/' %} aria-current="page"{% endif %}>Overview</a>
+            <a href="/research"{% if request.path == '/research' %} aria-current="page"{% endif %}>Research</a>
+            <a href="{{ url_for('apply') }}"{% if request.path == '/apply' %} aria-current="page"{% endif %}>Apply</a>
+            <a href="/applications"{% if request.path.startswith('/applications') %} aria-current="page"{% endif %}>My applications</a>
+        </nav>
+        <div class="account-nav">{% if current_user %}<span class="account-name">{{ current_user.username }}</span><form method="post" action="/logout"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="account-link" type="submit">Sign out</button></form>{% else %}<a class="account-link" href="/login">Sign in</a><a class="account-create" href="/register">Get started</a>{% endif %}</div>
+    </header>
+    {% with messages = get_flashed_messages() %}{% if messages %}<div class="page-shell global-flashes" role="alert">{% for message in messages %}<div class="flash-message">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+    {% block content %}{% endblock %}
+    <footer class="site-footer">
+        <span><strong>Microloan Atlas</strong> <span aria-hidden="true">/</span> From borrower stories to research evidence.</span>
+        <span>SDG 1 · No poverty <span aria-hidden="true">&nbsp; / &nbsp;</span> SDG 8 · Decent work</span>
+    </footer>
+    <button class="chat-launch" id="chat-launch" aria-expanded="false" aria-controls="chat-panel" data-chat-script="{{ asset_url(filename='js/chat.js') }}"><span aria-hidden="true">✦</span> Ask Atlas</button>
+    <aside class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" hidden>
+        <div class="chat-header"><div><p class="eyebrow">Your workspace assistant</p><h2 id="chat-title">Ask Atlas</h2></div><button type="button" class="icon-button" id="chat-close" aria-label="Close assistant">×</button></div>
+        <p class="chat-context">Ask about your assessment, payments, and research. Atlas connects each answer to the right page.</p>
+        <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions"><div class="chat-message assistant">How can I help? Ask me to explain your assessment, show your applications, or explore a loan topic.</div></div>
+        <div class="chat-suggestions"><button type="button" data-chat-prompt="Summarize the data">Dataset overview</button><button type="button" data-chat-prompt="What are the research limitations?">Limitations</button></div>
+        <form id="chat-form"><label class="sr-only" for="chat-input">Your question</label><input id="chat-input" name="message" maxlength="1000" placeholder="Ask about this research…" autocomplete="off" required><button class="primary-button" id="chat-send" type="submit" aria-label="Send question">Send</button></form>
+        <p class="chat-status" id="chat-status" role="status"></p>
+    </aside>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Microloan Atlas · Evidence for better livelihoods{% endblock %}
+{% block body_class %}landing-page{% endblock %}
+{% block content %}
+<main id="main" class="page-shell">
+    <section class="landing-hero">
+        <div class="hero-copy">
+            <p class="eyebrow"><span class="small-line" aria-hidden="true"></span> Finance with a human context</p>
+            <h1>Small loans.<br>Deeper <em>insight.</em></h1>
+            <p class="hero-description">Understand the relationship between microloans and livelihoods. Bring financial records and borrower stories together through NLP and clustering.</p>
+            <div class="hero-actions"><a class="primary-button" href="/research">Explore the research <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ url_for('apply') }}">Try an application <span aria-hidden="true">→</span></a></div>
+            <div class="hero-footnote"><span class="status-dot" aria-hidden="true"></span> Built on the Phase 1 application workflow</div>
+        </div>
+        <div class="evidence-map" aria-label="Research workflow: structured records and borrower narratives combine into clustering and NLP, leading to livelihood insights">
+            <div class="map-heading"><span class="eyebrow">The research lens</span><span class="map-tag">PI–15</span></div>
+            <div class="map-inputs"><div><span class="map-icon" aria-hidden="true">▥</span><strong>Loan records</strong><small>Amounts · terms · repayment</small></div><div><span class="map-icon" aria-hidden="true">≋</span><strong>Borrower stories</strong><small>Experiences · sentiment · topics</small></div></div>
+            <div class="map-connector" aria-hidden="true">↓</div>
+            <div class="map-center"><div class="cluster-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div><strong>Patterns, with context</strong><span>NLP + borrower clustering</span></div></div>
+            <div class="map-connector" aria-hidden="true">↓</div>
+            <div class="map-output"><span class="eyebrow">Research outcome</span><h2>A clearer view<br>of livelihood indicators.</h2><p>Compare groups. Surface themes.<br>Interpret associations responsibly.</p></div>
+            <div class="map-bottom">STRUCTURED DATA <span aria-hidden="true">+</span> HUMAN EXPERIENCE</div>
+        </div>
+    </section>
+    <section class="feature-section" aria-labelledby="explore-title">
+        <div class="section-heading"><div><p class="eyebrow">One connected workflow</p><h2 id="explore-title">Explore the evidence behind the numbers.</h2></div><p>A research workspace connecting the supplied datasets with the original borrower assessment.</p></div>
+        <div class="feature-grid">
+            <a class="feature-card" href="/research"><span class="feature-number">01 / DATA</span><h3>A portfolio in context <span aria-hidden="true">↗</span></h3><p>Trace the supplied datasets, inspect borrower records, and understand what each source can tell us.</p><span class="card-link">Open research dashboard →</span></a>
+            <a class="feature-card" href="/research#methods"><span class="feature-number">02 / ANALYSIS</span><h3>Stories meet patterns <span aria-hidden="true">↗</span></h3><p>Explore borrower groups, sentiment, topic words, and associations with repayment and income indicators.</p><span class="card-link">Explore the methods →</span></a>
+            <a class="feature-card" href="{{ url_for('apply') }}"><span class="feature-number">03 / APPLICATION</span><h3>An explainable preview <span aria-hidden="true">↗</span></h3><p>Submit a business narrative, inspect illustrative repayment calculations, and download the assessment.</p><span class="card-link">Start an application →</span></a>
+        </div>
+    </section>
+    <section class="impact-section lazy-section" aria-labelledby="impact-title">
+        <img src="{{ asset_url(filename='images/poor_farmer.png') }}" alt="Illustration of a farmer in an agricultural setting" loading="lazy" decoding="async" width="560" height="360">
+        <div><p class="eyebrow">Why this matters</p><h2 id="impact-title">Financial inclusion starts with understanding.</h2><p>Small-scale entrepreneurs need lending strategies that account for business conditions and lived experience. This project studies how loan attributes and narratives relate to livelihood indicators.</p><div class="sdg-tags"><span>SDG 1 · No poverty</span><span>SDG 8 · Decent work</span><span>SDG 10 · Reduced inequalities</span></div><p class="small-note">The supplied US consumer-loan data demonstrates the methods. Developing-region microfinance and household outcomes are needed to validate poverty-alleviation claims.</p></div>
+    </section>
+</main>
+{% endblock %}

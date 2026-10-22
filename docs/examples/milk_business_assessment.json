@@ -1,0 +1,476 @@
+{
+  "status": "needs_information",
+  "status_label": "More information needed",
+  "missing_information": [
+    "Provide declared monthly income in INR.",
+    "Provide existing monthly debt installments in INR.",
+    "Provide both monthly business revenue and monthly operating costs to calculate business cashflow. Enter zero explicitly where appropriate."
+  ],
+  "concerns": [],
+  "rule_trace": [
+    {
+      "id": "amount",
+      "label": "Requested principal",
+      "status": "pass",
+      "observed": 10000.0,
+      "threshold": "Explicit value required",
+      "explanation": "Value supplied; documentary verification is still required."
+    },
+    {
+      "id": "income",
+      "label": "Declared monthly income",
+      "status": "missing",
+      "observed": null,
+      "threshold": "Explicit value required",
+      "explanation": "Missing information is not replaced by a default."
+    },
+    {
+      "id": "obligations",
+      "label": "Existing monthly debt installments",
+      "status": "missing",
+      "observed": null,
+      "threshold": "Explicit value required",
+      "explanation": "Missing information is not replaced by a default."
+    },
+    {
+      "id": "purpose",
+      "label": "Purpose classification",
+      "status": "pass",
+      "observed": "Dairy business",
+      "threshold": "Recognized stated purpose",
+      "explanation": "Classification organizes relevant evidence and does not affect a risk score."
+    },
+    {
+      "id": "business_cashflow",
+      "label": "Declared business cashflow",
+      "status": "missing",
+      "observed": "Unavailable",
+      "threshold": "No inferred yield, quantity, margin or growth",
+      "explanation": "No business income or profit projection can be calculated from a business description or market price alone."
+    },
+    {
+      "id": "debt_ratio",
+      "label": "Total installment burden",
+      "status": "missing",
+      "observed": null,
+      "threshold": 0.4,
+      "explanation": "Income, principal and existing obligations are needed to calculate this ratio."
+    }
+  ],
+  "category": {
+    "raw": "I need a loan to open milk business in bengaluru of around 10000 rupees",
+    "purpose": "small_business",
+    "sector": "dairy",
+    "label": "Dairy business",
+    "source": "narrative_extracted",
+    "product": "Milk"
+  },
+  "input_provenance": [
+    {
+      "field": "loan_amount",
+      "label": "Requested principal",
+      "value": 10000.0,
+      "source": "narrative_extracted",
+      "detail": "Explicit input takes precedence over text extraction. No default loan amount is used."
+    },
+    {
+      "field": "term_months",
+      "label": "Repayment term (months)",
+      "value": 12,
+      "source": "configured_policy_default",
+      "detail": "Configured permitted range 1-360 months; default 12 months."
+    },
+    {
+      "field": "monthly_income",
+      "label": "Declared monthly income",
+      "value": null,
+      "source": "missing",
+      "detail": "Explicit declaration; not verified against documents. No dataset median is substituted."
+    },
+    {
+      "field": "existing_monthly_debt",
+      "label": "Existing monthly debt installments",
+      "value": null,
+      "source": "missing",
+      "detail": "Explicit declaration; not verified against documents. No dataset median is substituted."
+    },
+    {
+      "field": "monthly_business_revenue",
+      "label": "Monthly business revenue",
+      "value": null,
+      "source": "missing",
+      "detail": "Explicit declaration; not verified against documents. No dataset median is substituted."
+    },
+    {
+      "field": "monthly_business_costs",
+      "label": "Monthly business operating costs",
+      "value": null,
+      "source": "missing",
+      "detail": "Explicit declaration; not verified against documents. No dataset median is substituted."
+    },
+    {
+      "field": "purpose",
+      "label": "Loan purpose",
+      "value": "Dairy business",
+      "source": "narrative_extracted",
+      "detail": "Original category/text is retained for review."
+    },
+    {
+      "field": "location",
+      "label": "Business locality",
+      "value": "Bengaluru",
+      "source": "narrative_extracted",
+      "detail": "Only identified locality is used; fallback scope appears with context."
+    }
+  ],
+  "dataset_context": [
+    {
+      "source": "Supplied historical LendingClub sample",
+      "scope": "Historical US consumer lending",
+      "match_scope": "Loan-purpose category only; different population from this application",
+      "record_count": 135,
+      "description": "135 sampled records have purpose small_business. These records provide taxonomy/context only; their rates and outcomes do not set this applicant's terms or risk.",
+      "price_unit": null,
+      "median_price": null,
+      "mean_price": null,
+      "latest_date": null,
+      "location": null,
+      "product": "small_business"
+    },
+    {
+      "source": "Supplied dairy_dataset.csv",
+      "scope": "Separate Indian business context; not borrower-linked loan outcomes",
+      "match_scope": "State-level fallback: Karnataka; no city-level match for Bengaluru",
+      "record_count": 26,
+      "location": "Bengaluru",
+      "product": "Milk",
+      "description": "Observed source context only. These prices/records do not supply business quantity, costs, profit or growth for the applicant.",
+      "price_unit": "INR per source unit (liters/kg); exact product unit not standardized",
+      "median_price": 58.03,
+      "mean_price": 60.05,
+      "latest_date": null
+    }
+  ],
+  "loan_terms": {
+    "principal": 10000.0,
+    "annual_rate": 0.12,
+    "term_months": 12,
+    "months": 12,
+    "emi": 888.49,
+    "total_interest": 661.86,
+    "total_repayment": 10661.86,
+    "schedule": [
+      {
+        "Month": 1,
+        "EMI": 888.49,
+        "Principal": 788.49,
+        "Interest": 100.0,
+        "Balance": 9211.51
+      },
+      {
+        "Month": 2,
+        "EMI": 888.49,
+        "Principal": 796.37,
+        "Interest": 92.12,
+        "Balance": 8415.14
+      },
+      {
+        "Month": 3,
+        "EMI": 888.49,
+        "Principal": 804.34,
+        "Interest": 84.15,
+        "Balance": 7610.8
+      },
+      {
+        "Month": 4,
+        "EMI": 888.49,
+        "Principal": 812.38,
+        "Interest": 76.11,
+        "Balance": 6798.42
+      },
+      {
+        "Month": 5,
+        "EMI": 888.49,
+        "Principal": 820.51,
+        "Interest": 67.98,
+        "Balance": 5977.91
+      },
+      {
+        "Month": 6,
+        "EMI": 888.49,
+        "Principal": 828.71,
+        "Interest": 59.78,
+        "Balance": 5149.2
+      },
+      {
+        "Month": 7,
+        "EMI": 888.49,
+        "Principal": 837.0,
+        "Interest": 51.49,
+        "Balance": 4312.2
+      },
+      {
+        "Month": 8,
+        "EMI": 888.49,
+        "Principal": 845.37,
+        "Interest": 43.12,
+        "Balance": 3466.83
+      },
+      {
+        "Month": 9,
+        "EMI": 888.49,
+        "Principal": 853.82,
+        "Interest": 34.67,
+        "Balance": 2613.01
+      },
+      {
+        "Month": 10,
+        "EMI": 888.49,
+        "Principal": 862.36,
+        "Interest": 26.13,
+        "Balance": 1750.65
+      },
+      {
+        "Month": 11,
+        "EMI": 888.49,
+        "Principal": 870.98,
+        "Interest": 17.51,
+        "Balance": 879.67
+      },
+      {
+        "Month": 12,
+        "EMI": 888.47,
+        "Principal": 879.67,
+        "Interest": 8.8,
+        "Balance": 0.0
+      }
+    ],
+    "currency": "INR",
+    "policy": {
+      "id": "configurable-demo-v1",
+      "annual_rate": 0.12,
+      "term_months": 12,
+      "default_term_months": 12,
+      "min_term_months": 1,
+      "max_term_months": 360,
+      "max_total_debt_ratio": 0.4,
+      "currency": "INR",
+      "source": "Operator-configured academic demonstration policy; no lender policy supplied",
+      "description": "Illustrative 12% annual nominal interest, 12 monthly installments (configured default term), and total monthly debt installments at most 40% of declared monthly income. Allowed term range: 1-360 months.",
+      "limitations": "Excludes fees, insurance, penalties and unreported expenses. A lender must verify income, obligations, product rules and documents. No approval or risk probability is produced.",
+      "term_source": "configured_policy_default"
+    }
+  },
+  "policy_snapshot": {
+    "id": "configurable-demo-v1",
+    "annual_rate": 0.12,
+    "term_months": 12,
+    "default_term_months": 12,
+    "min_term_months": 1,
+    "max_term_months": 360,
+    "max_total_debt_ratio": 0.4,
+    "currency": "INR",
+    "source": "Operator-configured academic demonstration policy; no lender policy supplied",
+    "description": "Illustrative 12% annual nominal interest, 12 monthly installments (configured default term), and total monthly debt installments at most 40% of declared monthly income. Allowed term range: 1-360 months.",
+    "limitations": "Excludes fees, insurance, penalties and unreported expenses. A lender must verify income, obligations, product rules and documents. No approval or risk probability is produced.",
+    "term_source": "configured_policy_default"
+  },
+  "financials": {
+    "monthly_income": null,
+    "existing_monthly_debt": null,
+    "monthly_business_revenue": null,
+    "monthly_business_costs": null,
+    "annual_revenue": null,
+    "annual_operating_costs": null,
+    "annual_operating_surplus": null,
+    "annual_cash_after_debt_service": null,
+    "total_monthly_debt": null,
+    "debt_to_income_ratio": null,
+    "monthly_income_after_debt": null
+  },
+  "applicant_copy": {
+    "Applicant Name": "Illustrative example",
+    "Decision": "More information needed",
+    "Requested Loan": 10000.0,
+    "Monthly EMI": 888.49,
+    "Total Interest": 661.86,
+    "Annual Interest Rate": "12% (demo policy)",
+    "Estimated Annual Revenue": null,
+    "Operating Surplus": null,
+    "Operating Costs": null,
+    "Annual Cash After Debt Service": null,
+    "Projection Basis": "Only explicitly entered monthly business revenue and operating costs are annualized. No growth forecast.",
+    "Loan Purpose": "Dairy business",
+    "Currency": "INR"
+  },
+  "bank_copy": {
+    "Applicant Name": "Illustrative example",
+    "Decision": "More information needed",
+    "Requested Loan": 10000.0,
+    "Monthly EMI": 888.49,
+    "Total Interest": 661.86,
+    "Annual Interest Rate": 0.12,
+    "Estimated Annual Revenue": null,
+    "Operating Surplus": null,
+    "Operating Costs": null,
+    "Annual Cash After Debt Service": null,
+    "Projection Basis": "Only explicitly entered monthly business revenue and operating costs are annualized. No growth forecast.",
+    "Loan Purpose": "Dairy business",
+    "Currency": "INR"
+  },
+  "business_description": "I need a loan to open milk business in bengaluru of around 10000 rupees",
+  "sentiment": {
+    "label": "neutral",
+    "score": 0.0,
+    "explanation": "Neutral: no positive or negative words from the supported English lexicon were found. This is a descriptive request without enough emotional wording for this method to identify a positive or negative tone; it is not evidence of the borrower's feelings or business prospects.",
+    "method": "English keyword sentiment with negation",
+    "method_version": "lexicon-negation-v1",
+    "source": "application_narrative",
+    "matched_terms": [],
+    "match_count": 0,
+    "positive_matches": 0,
+    "negative_matches": 0,
+    "limitations": "This is an exploratory English keyword method, not a validated emotional assessment. It can miss context, sarcasm and other languages. Sentiment does not affect loan eligibility, interest, repayment estimates or financial calculations."
+  },
+  "repayment_assessment": {
+    "can_repay": null,
+    "within_demo_limit": false,
+    "confidence_score": null,
+    "emi_burden_percent": null,
+    "reasons": [
+      "No business income or profit projection can be calculated from a business description or market price alone.",
+      "Income, principal and existing obligations are needed to calculate this ratio."
+    ]
+  },
+  "interest_assessment": {
+    "base_rate": 0.12,
+    "final_rate": 0.12,
+    "increase": 0,
+    "factors": [
+      {
+        "name": "Configured demonstration policy",
+        "impact": 0,
+        "impact_display": "Fixed",
+        "reason": "Illustrative 12% annual nominal interest, 12 monthly installments (configured default term), and total monthly debt installments at most 40% of declared monthly income. Allowed term range: 1-360 months."
+      }
+    ]
+  },
+  "entities": {
+    "loan_amount": 10000.0,
+    "category": "Dairy business",
+    "product": "Milk",
+    "location": "Bengaluru",
+    "area": null,
+    "quantity": null,
+    "unit_price": null
+  },
+  "projection": {
+    "revenue": null,
+    "operating_cost": null,
+    "operating_surplus": null,
+    "assumptions": [],
+    "basis": "Only explicitly entered monthly business revenue and operating costs are annualized. No growth forecast."
+  },
+  "chart_data": {
+    "repayment": [
+      {
+        "Month": 1,
+        "EMI": 888.49,
+        "Principal": 788.49,
+        "Interest": 100.0,
+        "Balance": 9211.51
+      },
+      {
+        "Month": 2,
+        "EMI": 888.49,
+        "Principal": 796.37,
+        "Interest": 92.12,
+        "Balance": 8415.14
+      },
+      {
+        "Month": 3,
+        "EMI": 888.49,
+        "Principal": 804.34,
+        "Interest": 84.15,
+        "Balance": 7610.8
+      },
+      {
+        "Month": 4,
+        "EMI": 888.49,
+        "Principal": 812.38,
+        "Interest": 76.11,
+        "Balance": 6798.42
+      },
+      {
+        "Month": 5,
+        "EMI": 888.49,
+        "Principal": 820.51,
+        "Interest": 67.98,
+        "Balance": 5977.91
+      },
+      {
+        "Month": 6,
+        "EMI": 888.49,
+        "Principal": 828.71,
+        "Interest": 59.78,
+        "Balance": 5149.2
+      },
+      {
+        "Month": 7,
+        "EMI": 888.49,
+        "Principal": 837.0,
+        "Interest": 51.49,
+        "Balance": 4312.2
+      },
+      {
+        "Month": 8,
+        "EMI": 888.49,
+        "Principal": 845.37,
+        "Interest": 43.12,
+        "Balance": 3466.83
+      },
+      {
+        "Month": 9,
+        "EMI": 888.49,
+        "Principal": 853.82,
+        "Interest": 34.67,
+        "Balance": 2613.01
+      },
+      {
+        "Month": 10,
+        "EMI": 888.49,
+        "Principal": 862.36,
+        "Interest": 26.13,
+        "Balance": 1750.65
+      },
+      {
+        "Month": 11,
+        "EMI": 888.49,
+        "Principal": 870.98,
+        "Interest": 17.51,
+        "Balance": 879.67
+      },
+      {
+        "Month": 12,
+        "EMI": 888.47,
+        "Principal": 879.67,
+        "Interest": 8.8,
+        "Balance": 0.0
+      }
+    ],
+    "principal": 10000.0,
+    "total_interest": 661.86,
+    "monthly_income": null,
+    "existing_monthly_debt": null,
+    "emi": 888.49,
+    "remaining_monthly_income": null
+  },
+  "limitations": [
+    "No lending approval, repayment probability or poverty-impact estimate is produced.",
+    "Excludes fees, insurance, penalties and unreported expenses. A lender must verify income, obligations, product rules and documents. No approval or risk probability is produced.",
+    "Only explicitly supplied financial values are used. No business growth, yield, quantity or margin is inferred.",
+    "Historical dataset context is separate from this applicant and does not establish actual outcomes."
+  ],
+  "alternative_business": null,
+  "example_note": "SYNTHETIC DEMONSTRATION. Only the supplied example story is used; no income, sales, costs or payments were supplied. This is not a real applicant or lending decision."
+}

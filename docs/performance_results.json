@@ -1,0 +1,49 @@
+{
+  "runtime": "3.14.2",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "measured_at": "2026-09-16T11:56:48+0530",
+  "method": "Flask test client; one first call then sequential warm requests. Excludes process import, browser rendering, HTTP transport, OCR and on-demand PDF.",
+  "baseline": "No chat API existed in Phase 1. No before/after chat speed-up percentage is claimed.",
+  "results": {
+    "summary": {
+      "first_ms": 2.216,
+      "p50_ms": 0.463,
+      "p95_ms": 0.523,
+      "max_ms": 0.542,
+      "requests": 40,
+      "http_status": 200
+    },
+    "borrowers_page": {
+      "first_ms": 2.826,
+      "p50_ms": 0.297,
+      "p95_ms": 0.358,
+      "max_ms": 0.439,
+      "requests": 40,
+      "http_status": 200
+    },
+    "chat_dataset": {
+      "first_ms": 1.845,
+      "p50_ms": 0.401,
+      "p95_ms": 0.505,
+      "max_ms": 0.553,
+      "requests": 40,
+      "http_status": 200
+    },
+    "chat_clusters": {
+      "first_ms": 0.409,
+      "p50_ms": 0.393,
+      "p95_ms": 0.427,
+      "max_ms": 0.532,
+      "requests": 40,
+      "http_status": 200
+    },
+    "application_submit": {
+      "first_ms": 10190.353,
+      "p50_ms": 2.416,
+      "p95_ms": 3.139,
+      "max_ms": 3.139,
+      "requests": 10,
+      "http_status": 302
+    }
+  }
+}

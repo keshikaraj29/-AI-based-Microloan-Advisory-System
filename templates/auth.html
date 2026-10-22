@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Create account' if mode == 'register' else 'Sign in' }} · Microloan Atlas{% endblock %}
+{% block content %}
+<main id="main" class="page-shell auth-shell">
+ <section class="auth-story"><span class="soft-orb orb-blue" aria-hidden="true"></span><p class="eyebrow">Your lending workspace</p><h1>One place for<br>every <em>next step.</em></h1><p>Save your assessment. Understand the reasoning. Keep a clear record of every repayment.</p><div class="auth-features"><div><span aria-hidden="true">01</span><strong>Connected applications</strong><p>Return to your profiles and reports anytime.</p></div><div><span aria-hidden="true">02</span><strong>Transparent assessments</strong><p>See the inputs and rules behind each result.</p></div><div><span aria-hidden="true">03</span><strong>Payment history</strong><p>Record payments and review your schedule.</p></div></div></section>
+ <section class="auth-card"><p class="eyebrow">{{ 'Get started' if mode == 'register' else 'Welcome back' }}</p><h2>{{ 'Create your account' if mode == 'register' else 'Sign in to Atlas' }}</h2><p>{{ 'Your applications and repayment records belong to your account.' if mode == 'register' else 'Continue where you left off.' }}</p>
+  <form method="post" action="/{{ mode }}" class="simple-form" data-submit-form>
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="next" value="{{ next|default('/applications', true) }}">
+   <label for="username">Username<input id="username" name="username" autocomplete="username" minlength="3" maxlength="100" required autofocus placeholder="Choose a username" value="{{ request.form.get('username','') }}"></label>
+   <label for="password">Password<input type="password" id="password" name="password" autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}" {% if mode == 'register' %}minlength="10"{% endif %} maxlength="200" required placeholder="{{ 'At least 10 characters' if mode == 'register' else 'Your password' }}"></label>
+   <button type="submit" class="primary-button">{{ 'Create account' if mode == 'register' else 'Sign in' }} <span aria-hidden="true">→</span></button>
+  </form>
+  <p class="auth-alternative">{% if mode == 'register' %}Already have an account? <a href="/login">Sign in</a>{% else %}New to Atlas? <a href="/register">Create an account</a>{% endif %}</p><p class="small-note">Accounts are stored in this local project. Use demonstration details for testing.</p>
+ </section>
+</main>
+{% endblock %}

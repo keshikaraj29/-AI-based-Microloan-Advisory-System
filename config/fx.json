@@ -1,0 +1,11 @@
+{
+  "source_currency": "USD",
+  "display_currency": "INR",
+  "usd_to_inr": 95.2311,
+  "rate_date": "2026-09-10",
+  "verified_on": "2026-09-16",
+  "source": "Reserve Bank of India, National Summary Data Page",
+  "source_url": "https://www.rbi.org.in/scripts/BS_NSDPDisplay.aspx",
+  "method": "Fixed reference-rate snapshot for reproducible display conversion; not a live rate or a transaction quote.",
+  "scope": "Historical foreign-source loan amounts are converted into rupees for display. Conversion does not make the source records Indian loans. Indian market and applicant amounts are already rupees and are not converted again."
+}

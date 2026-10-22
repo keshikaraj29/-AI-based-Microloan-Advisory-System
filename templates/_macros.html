@@ -1,0 +1,4 @@
+{% macro money(value) -%}{% if value is none or value is undefined or value == '' %}Not provided{% elif value is number %}₹{{ '{:,.2f}'.format(value) }}{% else %}{{ value }}{% endif %}{%- endmacro %}
+{% macro status(value) -%}<span class="status-pill{% if value in ['Late','Charged Off','Overdue'] %} negative{% elif value in ['Not tracked','not_started','Due','Current'] %} neutral{% endif %}">{{ value|string|replace('_',' ')|title }}</span>{%- endmacro %}
+
+{% macro source_label(value) -%}{% set labels = {'user_entered':'Chosen by you','narrative_extracted':'Detected from your story','user_entered_unrecognized':'Your selection needs clarification','configured_policy_default':'Demo policy default','user_declaration_no_existing_loan':'You declared no existing loan','missing':'Not provided','not_provided':'Not provided'} %}{{ labels.get(value, value|string|replace('_',' ')|capitalize) }}{%- endmacro %}
